@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventureGame
+namespace ConsoleGame
 {
     class Program
     {
@@ -17,8 +17,7 @@ namespace AdventureGame
                 Console.WriteLine("Please enter the name of your new Hero: ");
                 string Name = Console.ReadLine();
 
-                Hero Hero = new Hero();
-                Hero.Name = Name;
+                Hero Hero = new Hero(Name);
 
                 Console.WriteLine("Your name is: " + Hero.Name);
                 Console.WriteLine("What would you like to do: \n"
@@ -36,91 +35,6 @@ namespace AdventureGame
                         break;
                 }
             }
-        }
-    }
-
-    class Game
-    {
-        public bool Playing
-        {
-            get; set;
-        }
-        public void GameOver()
-        {
-
-        }
-        public void Save() { }
-        public void goToTown(string TownName)
-        {
-            Console.WriteLine("Welcome to " + TownName + ". What would you like to do? \n"
-                               + "\t 1.) Shop\n"
-                               + "\t 2.) Heal\n"
-                               + "\t 3.) Rest\n"
-                               + "\t 4.) Save");
-            switch (Console.ReadLine())
-            {
-                case "1":
-                    goToShop();
-                    break;
-                case "2":
-                    goToHeal();
-                    break;
-                case "3":
-                    goToRest();
-                    break;
-                case "4":
-                    Save();
-                    break;
-                default:
-                    break;
-            }
-        }
-        private void goToShop()
-        { }
-        private void goToHeal()
-        { }
-        private void goToRest()
-        { }
-    }
-    class Character
-    {
-        public string Name
-        {
-            get; set;
-        }
-        public string Type
-        {
-            get; set;
-        }
-        public int Health
-        {
-            get; set;
-        }
-    }
-    class Hero : Character
-    {
-
-    }
-    class Enemy : Character
-    {
-
-    }
-    class Item
-    {
-        public string Name
-        {
-            get; set;
-        }
-    }
-    class Weapon : Item
-    {
-        public int Damage
-        {
-            get; set;
-        }
-        public int Durability
-        {
-            get; set;
         }
     }
 }
