@@ -7,20 +7,12 @@ using ConsoleGame.lib;
 
 namespace ConsoleGame
 {
-    public class Weapon : Item
+    public class HealthItem : Item
     {
-        public Weapon(string name) : base(name)
+        public HealthItem(string name) : base(name)
         {
         }
-        public int Damage
-        {
-            get; set;
-        }
-        public int Durability
-        {
-            get; set;
-        }
-        public int Range
+        public int HealPoints
         {
             get; set;
         }

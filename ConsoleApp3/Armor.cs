@@ -7,12 +7,12 @@ using ConsoleGame.lib;
 
 namespace ConsoleGame
 {
-    public class Weapon : Item
+    public class Armor : Item
     {
-        public Weapon(string name) : base(name)
+        public Armor(string name) : base(name)
         {
         }
-        public int Damage
+        public int DamageRecieved
         {
             get; set;
         }
@@ -20,11 +20,11 @@ namespace ConsoleGame
         {
             get; set;
         }
-        public int Range
+        public int Cost
         {
             get; set;
         }
-        public int Cost
+        public int Strength
         {
             get; set;
         }
