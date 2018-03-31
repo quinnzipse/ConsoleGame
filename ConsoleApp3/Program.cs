@@ -8,6 +8,8 @@ namespace ConsoleGame
 {
     class Program
     {
+        public static Hero hero;
+
         static void Main(string[] args)
         {
             Game Game = new Game();
@@ -17,9 +19,9 @@ namespace ConsoleGame
                 Console.WriteLine("Please enter the name of your new Hero: ");
                 string Name = Console.ReadLine();
 
-                Hero Hero = new Hero(Name);
+                hero = new Hero(Name);
 
-                Console.WriteLine("Your name is: " + Hero.Name);
+                Console.WriteLine("Your name is: " + hero.Name);
                 Console.WriteLine("What would you like to do: \n"
                                   + "\t 1.) Go into town\n"
                                   + "\t 2.) Go into the forest\n");

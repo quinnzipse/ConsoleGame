@@ -43,7 +43,10 @@ namespace ConsoleGame
             }
         }
         public void goToShop()
-        { }
+        {
+            Console.WriteLine("Welcome to the shop!\nYou currently have $" + Program.hero.Money + "!\n\nWhat would you like to buy?");
+            for(int i=0; )
+        }
         public void goToHeal()
         { }
         public void goToRest()
