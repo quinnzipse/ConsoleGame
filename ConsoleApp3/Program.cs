@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleGame.lib;
 
 namespace ConsoleGame
 {
@@ -12,13 +13,14 @@ namespace ConsoleGame
         {
             Game Game = new Game();
             Game.Playing = true;
+            Console.WriteLine("Please enter the name of your new Hero: ");
+            string Name = Console.ReadLine();
+
+            Hero Hero = new Hero(Name);
+
             while (Game.Playing)
             {
-                Console.WriteLine("Please enter the name of your new Hero: ");
-                string Name = Console.ReadLine();
-
-                Hero Hero = new Hero(Name);
-
+                Console.WriteLine();
                 Console.WriteLine("Your name is: " + Hero.Name);
                 Console.WriteLine("What would you like to do: \n"
                                   + "\t 1.) Go into town\n"
@@ -29,6 +31,9 @@ namespace ConsoleGame
                         Game.goToTown("Belmont");
                         break;
                     case "2":
+                        Console.Clear();
+                        Forest.findForest().execute();
+                        break;
                     default:
                         Console.WriteLine("Invalid Option");
                         Game.Playing = false;

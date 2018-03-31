@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enemy.cs" />
+    <Compile Include="forests\RedWoodForest.cs" />
+    <Compile Include="lib\Forest.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="lib\Character.cs" />
     <Compile Include="Game.cs" />
