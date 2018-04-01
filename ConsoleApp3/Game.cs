@@ -19,6 +19,7 @@ namespace ConsoleGame
         public void Save() { }
         public void goToTown(string TownName)
         {
+            Console.Clear();
             Console.WriteLine("Welcome to " + TownName + ". What would you like to do? \n"
                                + "\t 1.) Shop\n"
                                + "\t 2.) Heal\n"
@@ -44,11 +45,27 @@ namespace ConsoleGame
         }
         public void goToShop()
         {
+            Console.Clear();
             Console.WriteLine("Welcome to the shop!\nYou currently have $" + Program.hero.Money + "!\n\nWhat would you like to buy?");
-            for(int i=0; )
+            
         }
         public void goToHeal()
-        { }
+        {
+            Console.Clear();
+            String message = "Healing";
+            for (int i = 0; i < 4; i++)
+            { 
+                Console.Write(message);
+                Console.ReadLine();
+                message = message + ".";
+                Console.Clear();
+            }
+            Program.hero.currentHealth = 100;
+            Console.WriteLine("All healed, thanks for stopping by!");
+            Console.ReadLine();
+
+            goToTown("Belmont");
+        }
         public void goToRest()
         { }
     }
