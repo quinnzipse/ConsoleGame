@@ -8,6 +8,7 @@ namespace ConsoleGame
 {
     public class Game
     {
+        public String currentTown;
         public bool Playing
         {
             get; set;
@@ -19,6 +20,7 @@ namespace ConsoleGame
         public void Save() { }
         public void goToTown(string TownName)
         {
+            currentTown = TownName;
             Console.Clear();
             Console.WriteLine("Welcome to " + TownName + ". What would you like to do? \n"
                                + "\t 1.) Shop\n"
@@ -47,7 +49,8 @@ namespace ConsoleGame
         {
             Console.Clear();
             Console.WriteLine("Welcome to the shop!\nYou currently have $" + Program.hero.Money + "!\n\nWhat would you like to buy?");
-            
+            goToTown(currentTown);
+
         }
         public void goToHeal()
         {
@@ -64,7 +67,7 @@ namespace ConsoleGame
             Console.WriteLine("All healed, thanks for stopping by!");
             Console.ReadLine();
 
-            goToTown("Belmont");
+            goToTown(currentTown);
         }
         public void goToRest()
         { }
