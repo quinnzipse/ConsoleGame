@@ -1,6 +1,0 @@
-F:\Projects\ConsoleGame\ConsoleApp3\bin\Debug\ConsoleGame.exe.config
-F:\Projects\ConsoleGame\ConsoleApp3\bin\Debug\ConsoleGame.exe
-F:\Projects\ConsoleGame\ConsoleApp3\bin\Debug\ConsoleGame.pdb
-F:\Projects\ConsoleGame\ConsoleApp3\obj\Debug\ConsoleGame.csprojResolveAssemblyReference.cache
-F:\Projects\ConsoleGame\ConsoleApp3\obj\Debug\ConsoleGame.exe
-F:\Projects\ConsoleGame\ConsoleApp3\obj\Debug\ConsoleGame.pdb
