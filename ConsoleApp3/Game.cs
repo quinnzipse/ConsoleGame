@@ -65,6 +65,9 @@ namespace ConsoleGame
                 case "5":
                     heroStats();
                     break;
+                case "6":
+                    //Does nothing currently
+                    break;
                 default:
                     Console.Beep();
                     Console.WriteLine("\nInvalid Option");
@@ -79,76 +82,72 @@ namespace ConsoleGame
         //SHOP FUNCTIONS
         public void goToShop()
         {
+            //Frontend Shop
             Console.Beep();
             Console.Title = Program.GAME_NAME + " - Shop";
-            Armor[] armors = new Armor[] { new Helmet1(), new Helmet2(), new ChestPlate1(), new ChestPlate2(), new Leggings1(), new Leggings2() };
-            HealthItem[] healthItems = new HealthItem[] { new Potion(), new Bandage(), new FirstAid(), new MedKit() };
-            Weapon[] weapons = new Weapon[] { new Knife(), new Crossbow(), new Rifle(), new Shotgun(), new Sniper() };
-
-            Item[][] shopItems = new Item[][] { armors, healthItems, weapons };
-
+            Item[][] shopItems = new Item[][] { Item.armors, Item.healthItems, Item.weapons };
             Console.Clear();
             Console.WriteLine("Welcome to the shop!\nYou currently have $" + Program.hero.Money + "!\n\nHere is a list of our products.");
-
             for (int x = 0; x < shopItems.Length; x++)
-            {
-                String arrayName = shopItems[x].ToString().Split('.')[1];
-                Console.WriteLine("\n" + arrayName.Substring(0, arrayName.Length - 2));
+                {
+                    String arrayName = shopItems[x].ToString().Split('.')[1];
+                    Console.WriteLine("\n" + arrayName.Substring(0, arrayName.Length - 2));
 
-                if (shopItems[x].GetType().Equals(typeof(Weapon[])))
-                {
-                    for (int i = 0; i < shopItems[x].Length; i++)
+                    if (shopItems[x].GetType().Equals(typeof(Weapon[])))
                     {
-                        Weapon weapon = (Weapon)shopItems[x][i];
-                        Console.WriteLine(x + "" + i + ". " + weapon.Name + " -- Cost: " + weapon.Cost);
+                        for (int i = 0; i < shopItems[x].Length; i++)
+                        {
+                            Weapon weapon = (Weapon)shopItems[x][i];
+                            Console.WriteLine(x + "" + i + ". " + weapon.Name + " -- Cost: " + weapon.Cost);
+                        }
+                    }
+                    else if (shopItems[x].GetType().Equals(typeof(HealthItem[])))
+                    {
+                        for (int i = 0; i < shopItems[x].Length; i++)
+                        {
+                            HealthItem healthItem = (HealthItem)shopItems[x][i];
+                            Console.WriteLine(x + "" + i + ". " + healthItem.Name + " -- Cost: " + healthItem.Cost);
+                        }
+                    }
+                    else if (shopItems[x].GetType().Equals(typeof(Armor[])))
+                    {
+                        for (int i = 0; i < shopItems[x].Length; i++)
+                        {
+                            Armor armor = (Armor)shopItems[x][i];
+                            Console.WriteLine(x + "" + i + ". " + armor.Name + " -- Cost: " + armor.Cost);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("OOF");
                     }
                 }
-                else if (shopItems[x].GetType().Equals(typeof(HealthItem[])))
-                {
-                    for (int i = 0; i < shopItems[x].Length; i++)
-                    {
-                        HealthItem healthItem = (HealthItem)shopItems[x][i];
-                        Console.WriteLine(x + "" + i + ". " + healthItem.Name + " -- Cost: " + healthItem.Cost);
-                    }
-                }
-                else if (shopItems[x].GetType().Equals(typeof(Armor[])))
-                {
-                    for (int i = 0; i < shopItems[x].Length; i++)
-                    {
-                        Armor armor = (Armor)shopItems[x][i];
-                        Console.WriteLine(x + "" + i + ". " + armor.Name + " -- Cost: " + armor.Cost);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("OOF");
-                }
-            }
-
             Console.Beep();
             Console.Write("\nWhat would you like to purchase? ");
-            int[] finder = find();
+
+            //Backend Shop
+            int[] finder = findItem();
+            if (finder[0] > 2 || finder[0] < 1) return;
             Console.WriteLine("Would you like to buy this item? " + shopItems[finder[0]][finder[1]].Name);
             Console.ReadLine();
             string confirm = Console.ReadLine();
             if (confirm.ToLower() == "y" || confirm.ToLower() == "yes")
-            {
-                Console.Beep();
-                purchase(shopItems[finder[0]][finder[1]]);
-            }
+                {
+                    Console.Beep();
+                    Purchase(shopItems[finder[0]][finder[1]]);
+                }
             else goToShop();
-
             Console.Beep();
-
             goToTown(currentTown);
             return;
         }
-        public void purchase(Item item)
+        private void Purchase(Item item)
         {
             Weapon w = new Weapon();
             Armor a = new Armor();
             HealthItem h = new HealthItem();
-            int cost = 0;
+            int cost = int.MaxValue;
+            int amount = 0;
             char type = 'o';
 
             if (item.GetType().BaseType.Equals(typeof(Weapon)))
@@ -167,34 +166,56 @@ namespace ConsoleGame
             {
                 type = 'h';
                 h = (HealthItem)item;
-                cost = h.Cost;
+                Console.WriteLine("How many would you like to purchase? ");
+                amount = int.Parse(Console.ReadLine());
+                if (amount > 0) cost = h.Cost * amount;
+                else Console.WriteLine("Invalid Amount");
             }
 
-            if(Program.hero.Money > cost)
+            if(Program.hero.Money >= cost)
             {
-                Program.hero.Money = Program.hero.Money - cost;
+                Program.hero.Money -= cost;
                 switch (type)
                 {
                     case 'w':
-                        Program.hero.Weapons.Add(w);
+                        if (!Program.hero.Weapons.Contains(w)) Program.hero.Weapons.Add(w);
+                        else
+                        {
+                            Program.hero.Money += cost;
+                            Console.WriteLine("You Already Own This Item!");
+                        }
                         break;
                     case 'a':
-                        Program.hero.Armor.Add(a);
+                        if(!Program.hero.Armor.Contains(a)) Program.hero.Armor.Add(a);
+                        else
+                        {
+                            Program.hero.Money += cost;
+                            Console.WriteLine("You Already Own This Item!");
+                        }
                         break;
                     case 'h':
-                        Program.hero.HealthItems.Add(h);
+                        for (int i = 0; i < amount; i++)
+                        {
+                            Program.hero.HealthItems.Add(h);
+                        }
                         break;
                 }
                 Console.Beep();
                 Console.WriteLine("ADDED!");
             }
+            else
+            {
+                Console.WriteLine("\nInsignificant Funds! Please choose another option.");
+                Console.ReadLine();
+                goToShop();
+            }
 
         }
-        public int[] find()
+        private int[] findItem()
         {
             int[] finder = new int[2];
 
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < finder.Length; i++)
             {
                 int something = Console.Read() - 48;
                 if (something >= 0)

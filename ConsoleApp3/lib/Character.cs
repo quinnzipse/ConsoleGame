@@ -53,6 +53,10 @@ namespace ConsoleGame.lib
             get; set;
         }
 
+        public void CheckLists()
+        {
+        }
+
         public enum CharacterType
         {
             HERO,
