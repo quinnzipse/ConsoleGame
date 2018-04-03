@@ -14,6 +14,10 @@ namespace ConsoleGame.lib
             this.Type = type;
             this.currentHealth = health;
             this.Money = money;
+            this.Armor = new List<Armor>();
+            this.Weapons = new List<Weapon>();
+            this.HealthItems = new List<HealthItem>();
+
         }
         public string Name
         {
@@ -36,9 +40,25 @@ namespace ConsoleGame.lib
         {
             get; set;
         }
-        public List<Weapon> weapons
+        public List<Weapon> Weapons
         {
             get; set;
+        }
+        public List<Armor> Armor
+        {
+            get; set;
+        }
+        public List<HealthItem> HealthItems
+        {
+            get; set;
+        }
+
+        public void CheckLists()
+        {
+<<<<<<< HEAD
+            get; set;
+=======
+>>>>>>> origin/Quinn
         }
 
         public enum CharacterType

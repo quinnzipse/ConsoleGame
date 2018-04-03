@@ -9,7 +9,7 @@ namespace ConsoleGame.armor
 {
     class ChestPlate2 : Armor
     {
-        public ChestPlate2() : base("Chest Plate (Lvl 1)")
+        public ChestPlate2() : base("Chest Plate (Lvl 2)")
         {
             Durability = 1000;
             Cost = 150;

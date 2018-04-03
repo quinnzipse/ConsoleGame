@@ -9,6 +9,7 @@ namespace ConsoleGame
 {
     public class Armor : Item
     {
+        public Armor() : base("Nothing") { }
         public Armor(string name) : base(name)
         {
         }
