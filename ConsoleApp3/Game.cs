@@ -17,10 +17,6 @@ namespace ConsoleGame
         {
             get; set;
         }
-        public void GameOver()
-        {
-
-        }
         public void Save() {
             Console.WriteLine("SOON");
             Console.Beep();
