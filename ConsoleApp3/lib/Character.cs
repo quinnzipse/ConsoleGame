@@ -54,11 +54,7 @@ namespace ConsoleGame.lib
         }
 
         public void CheckLists()
-        {
-<<<<<<< HEAD
-            get; set;
-=======
->>>>>>> origin/Quinn
+        { 
         }
 
         public enum CharacterType

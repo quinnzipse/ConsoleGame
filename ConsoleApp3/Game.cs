@@ -40,7 +40,6 @@ namespace ConsoleGame
                                + "\t 1.) Shop\n"
                                + "\t 2.) Heal\n"
                                + "\t 3.) Rest\n"
-                               + "\t 4.) Save"
                                + "\t 4.) Save\n"
                                + "\t 5.) What do I have");
             switch (Console.ReadLine())

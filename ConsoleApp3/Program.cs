@@ -35,7 +35,6 @@ namespace ConsoleGame
                 hero.HealthItems.Add(new DefaultHeal());
                 hero.Weapons.Add(new DefaultWeapon());
 
-                Console.WriteLine("Your name is: " + hero.Name);
                 Console.WriteLine("What would you like to do: \n"
                                   + "\t 1.) Go into town\n"
                                   + "\t 2.) Go into the forest\n");
