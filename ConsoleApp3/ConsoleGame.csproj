@@ -58,9 +58,12 @@
     <Compile Include="Hero.cs" />
     <Compile Include="lib\Character.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="lib\Forest.cs" />
     <Compile Include="lib\Item.cs" />
+    <Compile Include="forests\MazeForest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="forests\RedWoodForest.cs" />
     <Compile Include="Weapon.cs" />
     <Compile Include="weapons\Crossbow.cs" />
     <Compile Include="weapons\Rifle.cs" />

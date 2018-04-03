@@ -38,7 +38,7 @@ namespace ConsoleGame.lib
         }
         public List<Weapon> weapons
         {
-            get; set;S
+            get; set;
         }
 
         public enum CharacterType
