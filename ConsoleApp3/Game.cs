@@ -21,17 +21,6 @@ namespace ConsoleGame
         {
 
         }
-        public void Save() { }
-        public void goToTown(string TownName)
-        {
-            Console.WriteLine("GAME OVER (Tell us if you ever get this)");
-            Console.Beep();
-            Console.Beep();
-            Console.Beep();
-            Console.Beep();
-            Console.BackgroundColor = 000;
-            Console.ReadLine();
-        }
         public void Save() {
             Console.WriteLine("SOON");
             Console.Beep();
@@ -82,23 +71,9 @@ namespace ConsoleGame
                     Console.Beep();
                     goToTown(currentTown);
                     break;
-                default:
-                    break;
             }
         }
-        public void goToShop()
-        {
-            Console.WriteLine("Welcome to the shop!\nYou currently have $" + Program.hero.Money + "!\n\nWhat would you like to buy?");
-            // for(int i=0; )
-        }
-        public void goToHeal()
-        { }
-        public void goToRest()
-        { }
                 
-            }
-        }
-
         //SHOP FUNCTIONS
         public void goToShop()
         {
