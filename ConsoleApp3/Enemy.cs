@@ -9,7 +9,7 @@ namespace ConsoleGame
 {
     public class Enemy : Character
     {
-        public Enemy(string name) : base(name, CharacterType.ENEMY, 100.0)
+        public Enemy(string name) : base(name, CharacterType.ENEMY, 100.0, 2)
         {
 
         }
