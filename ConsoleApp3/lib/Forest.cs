@@ -10,7 +10,7 @@ namespace ConsoleGame.lib
     class Forest
     {
 
-        private static Type[] forestTypes = new Type[] { typeof(RedWoodForest) };
+        private static Type[] forestTypes = new Type[] { typeof(RedWoodForest), typeof(MazeForest) };
         private static Random random = new Random();
 
         protected Forest(string name) {
