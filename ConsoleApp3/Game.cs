@@ -37,7 +37,8 @@ namespace ConsoleGame
                                + "\t 2.) Heal\n"
                                + "\t 3.) Rest\n"
                                + "\t 4.) Save\n"
-                               + "\t 5.) What do I have");
+                               + "\t 5.) What do I have"
+                               + "\t 6.) Go to forest");
             switch (Console.ReadLine())
             {
                 case "1":
@@ -56,7 +57,7 @@ namespace ConsoleGame
                     heroStats();
                     break;
                 case "6":
-                    //Does nothing currently
+                    Forest.findForest().execute();
                     break;
                 default:
                     Console.Beep();
@@ -117,7 +118,7 @@ namespace ConsoleGame
 
             //Backend Shop
             int[] finder = findItem();
-            if (finder[0] > 2 || finder[0] < 1) return;
+            if (finder[0] > 2 || finder[0] < 0) return;
             Console.WriteLine("Would you like to buy this item? " + shopItems[finder[0]][finder[1]].Name);
             Console.ReadLine();
             string confirm = Console.ReadLine();
@@ -186,7 +187,8 @@ namespace ConsoleGame
                     case 'h':
                         for (int i = 0; i < amount; i++)
                         {
-                            Program.hero.HealthItems.Add(h);
+                            if (!Program.hero.HealthItems.Contains(h)) Program.hero.HealthItems.Add(h);
+                            else Program.hero.HealthItems.Find((x) => x.GetType() == h.GetType()).ItemCount++;
                         }
                         break;
                 }
@@ -264,9 +266,10 @@ namespace ConsoleGame
             {
                 Console.WriteLine(x.Name);
             });
+            List<HealthItem> healthItems = new List<HealthItem> { };
             Program.hero.HealthItems.ForEach((x) =>
             {
-                Console.WriteLine(x.Name);
+                Console.WriteLine(x.Name + " (x" + x.ItemCount + ")");
             });
             Program.hero.Weapons.ForEach((x) =>
             {

@@ -18,9 +18,10 @@ namespace ConsoleGame.lib
         protected Item(string name)
         {
             this.Name = name;
-            
+            this.ItemCount = 1;
         }
 
         public String Name { get; set; }
+        public int ItemCount { get; set; }
     }
 }

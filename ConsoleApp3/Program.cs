@@ -13,6 +13,7 @@ namespace ConsoleGame
     class Program
     {
         public static Hero hero;
+        public static int days = 0;
 
         public static String GAME_NAME = "RandomGame";
 
@@ -30,6 +31,8 @@ namespace ConsoleGame
             {
                 Console.WriteLine();
                 Console.WriteLine("Your name is: " + Hero.Name);
+                Console.WriteLine("It is day: " + days);
+
                 hero = new Hero(Name);
                 hero.Armor.Add(new DefaultArmor());
                 hero.HealthItems.Add(new DefaultHeal());
