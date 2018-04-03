@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ConsoleGame.healing
 {
-    class MedKit : HealthItem
+    class Potion : HealthItem
     {
-        public MedKit() : base("Bandage")
+        public Potion() : base("Potion")
         {
-            HealPoints = 75;
-            Cost = 100;
+            HealPoints = 0;
+            Cost = 5;
         }
     }
 }

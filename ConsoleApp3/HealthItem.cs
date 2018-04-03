@@ -9,6 +9,8 @@ namespace ConsoleGame
 {
     public class HealthItem : Item
     {
+        public HealthItem() : base("Nothing") { }
+
         public HealthItem(string name) : base(name)
         {
         }

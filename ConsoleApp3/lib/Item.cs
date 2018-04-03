@@ -11,6 +11,7 @@ namespace ConsoleGame.lib
         protected Item(string name)
         {
             this.Name = name;
+            
         }
 
         public String Name { get; set; }

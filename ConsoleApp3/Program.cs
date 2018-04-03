@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleGame.weapons;
+using ConsoleGame.armor;
+using ConsoleGame.healing;
 
 namespace ConsoleGame
 {
@@ -10,8 +13,11 @@ namespace ConsoleGame
     {
         public static Hero hero;
 
+        public static String GAME_NAME = "RandomGame";
+
         static void Main(string[] args)
         {
+            Console.Title = GAME_NAME;
             Game Game = new Game();
             Game.Playing = true;
             while (Game.Playing)
@@ -20,6 +26,9 @@ namespace ConsoleGame
                 string Name = Console.ReadLine();
 
                 hero = new Hero(Name);
+                hero.Armor.Add(new DefaultArmor());
+                hero.HealthItems.Add(new DefaultHeal());
+                hero.Weapons.Add(new DefaultWeapon());
 
                 Console.WriteLine("Your name is: " + hero.Name);
                 Console.WriteLine("What would you like to do: \n"

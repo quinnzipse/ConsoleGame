@@ -9,6 +9,8 @@ namespace ConsoleGame
 {
     public class Weapon : Item
     {
+        public Weapon() : base("Nothing") { }
+
         public Weapon(string name) : base(name)
         {
         }
